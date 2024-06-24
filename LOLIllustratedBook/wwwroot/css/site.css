@@ -1,0 +1,158 @@
+﻿/* site.css */
+
+.container {
+    max-width: 960px;
+    margin: auto;
+    padding: 15px;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.card {
+    margin: 10px;
+    transition: max-height 0.5s ease;
+    overflow: hidden;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.btn {
+    margin: 5px;
+}
+
+#pagination .btn {
+    margin: 0 5px;
+}
+
+div.card-body {
+    font-size: 10px;
+}
+
+@media (max-width: 768px) {
+    .card-title {
+        font-size: 20px;
+    }
+
+    .card-text {
+        font-size: 16px;
+    }
+
+    .card.collapsed {
+        max-height: 150px;
+    }
+
+    .card.expanded {
+        max-height: 1000px;
+    }
+
+    .card .card-body {
+        display: none;
+    }
+
+    .card.expanded .card-body {
+        display: block;
+        font-size: 30px;
+    }
+
+    .card .toggle-btn {
+        display: block;
+        margin: auto;
+        font-size: 30px;
+    }
+
+    .details-page .card {
+        width: 100%;
+        margin: auto;
+    }
+
+    .details-page .img-thumbnail {
+        width: 100%;
+        max-width: 200px;
+        margin: auto;
+    }
+
+    .text-center img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .card img {
+        max-width: 100%;
+        height: auto;
+        text-align: center;
+    }
+
+    #nameFilter::placeholder {
+        font-size: 20px;
+    }
+
+    #attributeFilter {
+        font-size: 20px;
+    }
+
+    #titleFilter {
+        font-size: 20px;
+    }
+
+    div.card-body {
+        font-size: 20px;
+    }
+
+    .blurb {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 769px) {
+    .card-title {
+        font-size: 24px;
+    }
+
+    .card-text {
+        font-size: 18px;
+    }
+
+    .card.collapsed,
+    .card.expanded {
+        max-height: none;
+    }
+
+    .card .card-body,
+    .card .toggle-btn {
+        display: block;
+        font-size: 50px;
+    }
+
+    #nameFilter::placeholder {
+        font-size: 20px;
+    }
+
+    #attributeFilter {
+        font-size: 20px;
+    }
+
+    #titleFilter {
+        font-size: 20px;
+    }
+
+    div.card-body {
+        font-size: 20px;
+    }
+
+    .blurb {
+        font-size: 20px;
+    }
+
+    h5.card-title {
+        font-size: 20px;
+    }
+
+    p.card-text {
+        font-size: 20px;
+    }
+}

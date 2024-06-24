@@ -1,0 +1,63 @@
+﻿@model List<LOLIllustratedBook.Models.Hero>
+@{
+    ViewData["Title"] = "英雄列表";
+    int totalPages = ViewBag.TotalPages;
+    int currentPage = ViewBag.CurrentPage;
+}
+
+<h1 class="text-center">Champions List</h1>
+
+<form id="filterForm" class="text-center mb-4">
+    <input type="text" id="nameFilter" placeholder="查詢名字" class="form-control d-inline-block w-auto" style="font-size: 1.5em;">
+    <input type="text" id="titleFilter" placeholder="查詢title" class="form-control d-inline-block w-auto" style="font-size: 1.5em;">
+    <input type="text" id="attributeFilter" placeholder="查詢屬性" class="form-control d-inline-block w-auto" style="font-size: 1.5em;">
+</form>
+
+<button id="toggleSearchFields" class="btn btn-primary mb-3">顯示搜尋欄</button>
+
+<script>
+    document.getElementById('toggleSearchFields').addEventListener('click', function () {
+        var filterForm = document.getElementById('filterForm');
+        filterForm.style.display = filterForm.style.display === 'none' ? 'block' : 'none';
+    });
+</script>
+
+<div id="heroCards" class="row">
+    @foreach (var hero in Model)
+    {
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4 hero-card"
+             data-name="@hero.Name"
+             data-title="@hero.Title"
+             data-attribute="@string.Join(", ", hero.Tags)">
+            <div class="card">
+                <img src="@hero.ImageUrl" class="card-img-top" alt="@hero.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@hero.Name</h5>
+                    <p class="card-text">@hero.Title</p>
+                    <p><strong>Attributes:</strong> @string.Join(", ", hero.Tags)</p>
+                    <p><strong>Attack:</strong> @hero.Info.Attack</p>
+                    <p><strong>Defense:</strong> @hero.Info.Defense</p>
+                    <p><strong>Magic:</strong> @hero.Info.Magic</p>
+                    <p><strong>Difficulty:</strong> @hero.Info.Difficulty</p>
+                    <a href="@Url.Action("Details", new { id = hero.Id })" class="btn btn-primary">查看詳情</a>
+                </div>
+                <button class="btn btn-secondary toggle-btn">展開</button>
+                <div class="card-details" style="display: none;">
+                    <p><strong>Attack:</strong> @hero.Info.Attack</p>
+                    <p><strong>Defense:</strong> @hero.Info.Defense</p>
+                    <p><strong>Magic:</strong> @hero.Info.Magic</p>
+                    <p><strong>Difficulty:</strong> @hero.Info.Difficulty</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div id="pagination" class="text-center mt-4">
+    <a asp-action="Index" asp-route-page="@(currentPage - 1)" class="btn btn-primary @(currentPage == 1 ? "disabled" : "")">Previous</a>
+    <a asp-action="Index" asp-route-page="@(currentPage + 1)" class="btn btn-primary @(currentPage == totalPages ? "disabled" : "")">Next</a>
+</div>
+
+@section Scripts {
+    <script src="~/js/site.js"></script>
+}

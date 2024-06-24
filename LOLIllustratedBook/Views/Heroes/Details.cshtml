@@ -1,0 +1,28 @@
+﻿@model LOLIllustratedBook.Models.Hero
+@{
+    ViewData["Title"] = "Hero Details";
+}
+
+<h1 class="text-center">詳情介紹</h1>
+
+<div class="text-center mb-3">
+    <a href="@Url.Action("Index")" class="btn btn-primary">返回</a>
+</div>
+
+<div class="card mx-auto details-page" style="width: 100%;">
+    <img src="@Model.ImageUrl" class="card-img-top" alt="@Model.Name">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text">@Model.Title</p>
+        <p><strong>Blurb:</strong> @Model.Blurb</p>
+        <div class="card-text">
+            <p><strong>Attack:</strong> @Model.Info.Attack</p>
+            <p><strong>Defense:</strong> @Model.Info.Defense</p>
+            <p><strong>Magic:</strong> @Model.Info.Magic</p>
+            <p><strong>Difficulty:</strong> @Model.Info.Difficulty</p>
+        </div>
+        <div class="text-center mt-3">
+            <a href="@Url.Action("Index")" class="btn btn-primary">返回</a>
+        </div>
+    </div>
+</div>
